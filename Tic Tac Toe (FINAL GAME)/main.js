@@ -13,16 +13,7 @@ crossImg.src = "img/cross.png";
 let circleImg = document.createElement("img");
 circleImg.src = "img/circle.png";
 
-let cross = {
-  x: 50,
-  y: 50,
-  w: 100,
-  h: 100,
-};
-
-let column = 0;
-
-let row = 0;
+let cell = 0;
 
 let currentPlayer = "X";
 
@@ -35,6 +26,15 @@ let mouseIsPressed = false;
 let frameCount;
 let state;
 let mouseX, mouseY, pmouseX, pmouseY;
+let cell1Content = "";
+let cell2Content = "";
+let cell3Content = "";
+let cell4Content = "";
+let cell5Content = "";
+let cell6Content = "";
+let cell7Content = "";
+let cell8Content = "";
+let cell9Content = "";
 
 reset();
 // Draw Function
