@@ -25,64 +25,67 @@ function runGame() {
 
 function findGridLoc() {
   if (mouseX < 266 && mouseY < 200) {
-    column = 1;
-    row = 1;
+    cell = 1;
   } else if (mouseX < 533 && mouseX > 316 && mouseY < 200) {
-    column = 2;
-    row = 1;
+    cell = 2;
   } else if (mouseX > 583 && mouseX < cnv.width && mouseY < 200) {
-    column = 3;
-    row = 1;
+    cell = 3;
   } else if (mouseX < 266 && mouseY < 500) {
-    column = 1;
-    row = 2;
+    cell = 4;
   } else if (mouseX < 533 && mouseX > 316 && mouseY < 500) {
-    column = 2;
-    row = 2;
+    cell = 5;
   } else if (mouseX > 583 && mouseX < cnv.width && mouseY < 500) {
-    column = 3;
-    row = 2;
+    cell = 6;
   } else if (mouseX < 266 && mouseY < cnv.height) {
-    column = 1;
-    row = 3;
+    cell = 7;
   } else if (mouseX < 533 && mouseX > 316 && mouseY < cnv.height) {
-    column = 2;
-    row = 3;
+    cell = 8;
   } else if (mouseX > 583 && mouseX < cnv.width && mouseY < cnv.height) {
-    column = 3;
-    row = 3;
+    cell = 9;
   }
 }
 
 function outputImg() {
   if (mouseIsPressed && currentPlayer === "X") {
-    if (column === 1 && row === 1) {
-      cross.x = 90;
-      cross.y = 50;
-    } else if (column === 2 && row === 1) {
-      cross.x = 375;
-      cross.y = 50;
-    } else if (column === 3 && row === 1) {
-      cross.x = 640;
-      cross.y = 50;
-    } else if (column === 1 && row === 2) {
-      cross.x = 90;
-      cross.y = 330;
-    } else if (column === 2 && row === 2) {
-      cross.x = 375;
-      cross.y = 330;
-    } else if (column === 3 && row === 2) {
-      cross.x = 640;
-      cross.y = 330;
-    } else if (column === 1 && row === 3) {
-      cross.x = 90;
-      cross.y = 630;
-    } else if (column === 2 && row === 3) {
-      cross.x = 375;
-      cross.y = 630;
-    } else if (column === 3 && row === 3) {
-      cross.x = 640;
-      cross.y = 630;
+    if (cell === 1) {
+      cell1Content = "X";
+    } else if (cell === 2) {
+      cell2Content = "X";
+    } else if (cell === 3) {
+      cell3Content = "X";
+    } else if (cell === 4) {
+      cell4Content = "X";
+    } else if (cell === 5) {
+      cell5Content = "X";
+    } else if (cell === 6) {
+      cell6Content = "X";
+    } else if (cell === 7) {
+      cell7Content = "X";
+    } else if (cell === 8) {
+      cell8Content = "X";
+      v;
+    } else if (cell === 9) {
+      cell9Content = "X";
+    }
+  } else if (mouseIsPressed && currentPlayer === "O") {
+    if (cell === 1) {
+      cell1Content = "O";
+    } else if (cell === 2) {
+      cell2Content = "O";
+    } else if (cell === 3) {
+      cell3Content = "O";
+    } else if (cell === 4) {
+      cell4Content = "O";
+    } else if (cell === 5) {
+      cell5Content = "O";
+    } else if (cell === 6) {
+      cell6Content = "O";
+    } else if (cell === 7) {
+      cell7Content = "O";
+    } else if (cell === 8) {
+      cell8Content = "O";
+    } else if (cell === 9) {
+      cell9Content = "O";
     }
   }
 }
@@ -138,6 +141,47 @@ function drawMainComponents() {
   ctx.fillText("Your Wins: 0 ", 25, cnv.height - 15);
   ctx.fillText("Computer Wins: 0", cnv.width - 300, cnv.height - 15);
 
-  // Cross Image
-  ctx.drawImage(crossImg, cross.x, cross.y, cross.w, cross.h);
+  // Draw X's and O's
+  if (cell1Content === "X") {
+    ctx.drawImage(crossImg, 90, 50, 100, 100);
+  } else if (cell1Content === "O") {
+    ctx.drawImage(circleImg, 90, 50, 100, 100);
+  }
+
+  if (cell2Content === "X") {
+    ctx.drawImage(crossImg, 375, 50, 100, 100);
+  } else if (cell2Content === "O") {
+    ctx.drawImage(circleImg, 90, 50, 100, 100);
+  }
 }
+
+// x and y positions of images down below (use cross.x and cross.y)
+
+// if (column === 1 && row === 1) {
+//   cross.x = 90;
+//   cross.y = 50;
+// } else if (column === 2 && row === 1) {
+//   cross.x = 375;
+//   cross.y = 50;
+// } else if (column === 3 && row === 1) {
+//   cross.x = 640;
+//   cross.y = 50;
+// } else if (column === 1 && row === 2) {
+//   cross.x = 90;
+//   cross.y = 330;
+// } else if (column === 2 && row === 2) {
+//   cross.x = 375;
+//   cross.y = 330;
+// } else if (column === 3 && row === 2) {
+//   cross.x = 640;
+//   cross.y = 330;
+// } else if (column === 1 && row === 3) {
+//   cross.x = 90;
+//   cross.y = 630;
+// } else if (column === 2 && row === 3) {
+//   cross.x = 375;
+//   cross.y = 630;
+// } else if (column === 3 && row === 3) {
+//   cross.x = 640;
+//   cross.y = 630;
+// }
