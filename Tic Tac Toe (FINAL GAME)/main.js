@@ -15,42 +15,42 @@ circleImg.src = "img/circle.png";
 
 let cell = 0;
 
-let currentPlayer = "X";
-
-// Helicopter
-// ctx.drawImage(heliImg, heli.x, heli.y);
-
 let mouseIsPressed = false;
+
+let xWins = 0;
+
+let oWins = 0;
 
 // Global Variables (Reset)
 let frameCount;
 let state;
 let mouseX, mouseY, pmouseX, pmouseY;
-let cell1Content = "";
-let cell2Content = "";
-let cell3Content = "";
-let cell4Content = "";
-let cell5Content = "";
-let cell6Content = "";
-let cell7Content = "";
-let cell8Content = "";
-let cell9Content = "";
+let currentPlayer;
+let cell1Content;
+let cell2Content;
+let cell3Content;
+let cell4Content;
+let cell5Content;
+let cell6Content;
+let cell7Content;
+let cell8Content;
+let cell9Content;
 
 reset();
 // Draw Function
 window.addEventListener("load", draw);
 
 function draw() {
-  if (state === "start") {
-    drawStart();
-  } else if (state === "gameon") {
-    runGame();
-  } else if (state === "gameover") {
-    drawGameOver();
-  }
+	if (state === "start") {
+		drawStart();
+	} else if (state === "gameon") {
+		runGame();
+	} else if (state === "gameover") {
+		drawGameOver();
+	}
 
-  // Request Animation Frame
-  requestAnimationFrame(draw);
+	// Request Animation Frame
+	requestAnimationFrame(draw);
 }
 
 // EVENT STUFF
@@ -59,24 +59,25 @@ document.addEventListener("mouseup", mouseupHandler);
 document.addEventListener("mousemove", mousemovehandler);
 
 function mousedownHandler() {
-  mouseIsPressed = true;
-  frameCount++;
+	mouseIsPressed = true;
+	frameCount++;
 
-  if (state === "start") {
-    state = "gameon";
-  }
+	if (state === "start") {
+		state = "gameon";
+	}
 }
 
 function mouseupHandler() {
-  mouseIsPressed = false;
+	mouseIsPressed = false;
 }
 
 function mousemovehandler(event) {
-  // Save previous mouseX and mouseY
-  pmouseX = mouseX;
-  pmouseY = mouseY;
-  // Update mouseX and mouseY
-  let cnvRect = cnv.getBoundingClientRect();
-  mouseX = event.x - cnvRect.x;
-  mouseY = event.y - cnvRect.y;
+	// Save previous mouseX and mouseY
+	pmouseX = mouseX;
+	pmouseY = mouseY;
+	// Update mouseX and mouseY
+	let cnvRect = cnv.getBoundingClientRect();
+	mouseX = event.x - cnvRect.x;
+	mouseY = event.y - cnvRect.y;
 }
+
