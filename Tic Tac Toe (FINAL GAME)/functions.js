@@ -141,7 +141,8 @@ function gameEndStatus() {
 			cell5Content === cell7Content &&
 			cell3Content === "X")
 	) {
-		xWins++;
+		xWin = true;
+		numXWins++;
 		gameOver();
 	} else if (
 		// Rows
@@ -172,7 +173,8 @@ function gameEndStatus() {
 			cell5Content === cell7Content &&
 			cell3Content === "O")
 	) {
-		oWins++;
+		oWin = true;
+		numOWins++;
 		gameOver();
 	} else if (
 		// Check for a draw
@@ -186,6 +188,8 @@ function gameEndStatus() {
 		cell8Content !== "" &&
 		cell9Content !== ""
 	) {
+		tieWin = true;
+		numTies++;
 		gameOver();
 	}
 }
@@ -205,10 +209,24 @@ function drawGame() {
 function drawGameOver() {
 	drawMainComponents();
 
-	// Game Over Text
-	ctx.font = "80px Consolas";
-	ctx.fillStyle = "red";
-	ctx.fillText("GAME OVER", 250, 350);
+	// Bar
+	ctx.fillStyle = "#7852A9";
+	ctx.fillRect(0, 300, cnv.width, 120);
+
+	// Output Text Based On Win
+	if (xWin) {
+		ctx.font = "80px Monospace";
+		ctx.fillStyle = "#311432";
+		ctx.fillText("PLAYER X WINS", 140, 380);
+	} else if (oWin) {
+		ctx.font = "80px Monospace";
+		ctx.fillStyle = "#311432";
+		ctx.fillText("PLAYER O WINS", 140, 380);
+	} else {
+		ctx.font = "80px Monospace";
+		ctx.fillStyle = "#311432";
+		ctx.fillText("DRAW", 320, 380);
+	}
 }
 
 // HELPER FUNCTIONS
@@ -224,6 +242,10 @@ function reset() {
 	cell7Content = "";
 	cell8Content = "";
 	cell9Content = "";
+	winText = "";
+	xWin = false;
+	oWin = false;
+	tieWin = false;
 }
 
 function drawMainComponents() {
@@ -239,15 +261,16 @@ function drawMainComponents() {
 	ctx.fillRect(0, 500, cnv.width, 50);
 
 	// Draw Text Bar
-	ctx.fillStyle = "blue";
+	ctx.fillStyle = "#7852A9";
 	ctx.fillRect(0, 800, cnv.width, 900);
 
-	// Blue Bar Text
-	ctx.font = "30px Consolas";
-	ctx.fillStyle = "black";
+	// Purple Bar Text
+	ctx.font = "30px Monospace";
+	ctx.fillStyle = "#311432";
 	ctx.fillText("TIC TAC TOE: Player " + currentPlayer + " is playing", 25, 840);
-	ctx.fillText("X wins : " + xWins, 25, cnv.height - 15);
-	ctx.fillText("O Wins: " + oWins, 600, cnv.height - 15);
+	ctx.fillText("X wins : " + numXWins, 25, cnv.height - 15);
+	ctx.fillText("O Wins: " + numOWins, 600, cnv.height - 15);
+	ctx.fillText("Ties: " + numTies, 340, cnv.height - 15);
 
 	// Draw X's and O's
 	if (cell1Content === "X") {
