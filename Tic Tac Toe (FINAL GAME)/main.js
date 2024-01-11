@@ -6,6 +6,9 @@ let ctx = cnv.getContext("2d");
 cnv.width = 800;
 cnv.height = 900;
 
+// Background Color
+document.body.style.backgroundColor = "#E4A0F7";
+
 // Global Variables (0nce)
 let crossImg = document.createElement("img");
 crossImg.src = "img/cross.png";
@@ -17,9 +20,11 @@ let cell = 0;
 
 let mouseIsPressed = false;
 
-let xWins = 0;
+let numXWins = 0;
 
-let oWins = 0;
+let numOWins = 0;
+
+let numTies = 0;
 
 // Global Variables (Reset)
 let frameCount;
@@ -35,6 +40,10 @@ let cell6Content;
 let cell7Content;
 let cell8Content;
 let cell9Content;
+let winText;
+let xWin;
+let oWin;
+let tieWin;
 
 reset();
 // Draw Function
@@ -80,4 +89,3 @@ function mousemovehandler(event) {
 	mouseX = event.x - cnvRect.x;
 	mouseY = event.y - cnvRect.y;
 }
-
