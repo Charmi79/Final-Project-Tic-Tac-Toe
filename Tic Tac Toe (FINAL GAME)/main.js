@@ -41,25 +41,25 @@ let cell7Content;
 let cell8Content;
 let cell9Content;
 let winText;
-let xWin;
-let oWin;
-let tieWin;
+let winnerIsX;
+let winnerIsO;
+let gameIsTied;
 
 reset();
 // Draw Function
 window.addEventListener("load", draw);
 
 function draw() {
-	if (state === "start") {
-		drawStart();
-	} else if (state === "gameon") {
-		runGame();
-	} else if (state === "gameover") {
-		drawGameOver();
-	}
+  if (state === "start") {
+    drawStart();
+  } else if (state === "gameon") {
+    runGame();
+  } else if (state === "gameover") {
+    drawGameOver();
+  }
 
-	// Request Animation Frame
-	requestAnimationFrame(draw);
+  // Request Animation Frame
+  requestAnimationFrame(draw);
 }
 
 // EVENT STUFF
@@ -68,24 +68,25 @@ document.addEventListener("mouseup", mouseupHandler);
 document.addEventListener("mousemove", mousemovehandler);
 
 function mousedownHandler() {
-	mouseIsPressed = true;
-	frameCount++;
+  mouseIsPressed = true;
+  frameCount++;
 
-	if (state === "start") {
-		state = "gameon";
-	}
+  if (state === "start") {
+    state = "gameon";
+  }
 }
 
 function mouseupHandler() {
-	mouseIsPressed = false;
+  mouseIsPressed = false;
 }
 
 function mousemovehandler(event) {
-	// Save previous mouseX and mouseY
-	pmouseX = mouseX;
-	pmouseY = mouseY;
-	// Update mouseX and mouseY
-	let cnvRect = cnv.getBoundingClientRect();
-	mouseX = event.x - cnvRect.x;
-	mouseY = event.y - cnvRect.y;
+  // Save previous mouseX and mouseY
+  pmouseX = mouseX;
+  pmouseY = mouseY;
+  // Update mouseX and mouseY
+  let cnvRect = cnv.getBoundingClientRect();
+  mouseX = event.x - cnvRect.x;
+  mouseY = event.y - cnvRect.y;
 }
+
